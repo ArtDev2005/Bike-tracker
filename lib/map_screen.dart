@@ -21,7 +21,13 @@ class _MyAppState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Map();
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Карта"),
+          backgroundColor: Colors.blue,
+        ),
+        body: Map()
+    );
   }
 }
 
