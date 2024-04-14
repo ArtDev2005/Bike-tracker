@@ -39,52 +39,7 @@ class _RoutesScreenState extends State<RoutesScreen> {
             Expanded(
               child: ListView.separated(
                   itemBuilder: (BuildContext context, int index){
-                    return Container(
-                      clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.all(Radius.circular(20))
-                      ),
-
-                      width: 300,
-                      height: 150,
-                      child: Column(
-                        children: [
-                          Container(color: Colors.grey, height: 100,),
-                          Container(
-                            color: Colors.red,
-                            height: 50,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundImage: AssetImage(Images.userIcon),
-                                  ),
-                                  SizedBox(width: 16,),
-                                  FittedBox(
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text("Средняя скорость: 30 км./ч."),
-                                        Text("Проиденное расстояние: 64 км."),
-                                        Row(
-                                          children: [
-                                            Icon(Icons.location_on_sharp),
-                                            Text("г. Череповец, Вологодская область, Россия")
-                                          ],
-
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
+                    return RouteCard();
                   },
                   separatorBuilder: (BuildContext context, int index) => SizedBox(height: 10,),
                   itemCount: 100
@@ -92,6 +47,66 @@ class _RoutesScreenState extends State<RoutesScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+
+class RouteCard extends StatefulWidget {
+  const RouteCard({super.key});
+
+  @override
+  State<RouteCard> createState() => _RouteCardState();
+}
+
+class _RouteCardState extends State<RouteCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.all(Radius.circular(20))
+      ),
+
+      width: 300,
+      height: 150,
+      child: Column(
+        children: [
+          Container(color: Colors.grey, height: 100,),
+          Container(
+            color: Colors.blueAccent,
+            height: 50,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage(Images.userIcon),
+                  ),
+                  SizedBox(width: 16,),
+                  FittedBox(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Средняя скорость: 30 км./ч."),
+                        Text("Проиденное расстояние: 64 км."),
+                        Row(
+                          children: [
+                            Icon(Icons.location_on_sharp),
+                            Text("г. Череповец, Вологодская область, Россия")
+                          ],
+
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
